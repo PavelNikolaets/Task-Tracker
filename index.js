@@ -23,7 +23,6 @@ function create_task() {
         }
 
         date_create = `${currentDate.getHours()}:${currentDate.getMinutes()}`
-        date_update = 'No updates'
 
         console.log(`Creating a task with these parameters: 
             - Name: ${name}, 
@@ -35,8 +34,6 @@ function create_task() {
                 
         data_json[id] = {'name': name, 'description': description, 'status': status, 'create': date_create, 'update': date_update}
         data_json = JSON.stringify(data_json,null,2)
-
-        console.log(data_json)
 
         fs.writeFile(filePath, data_json,'utf-8', (err) => {
             if (err) throw err;
@@ -113,7 +110,6 @@ function list_tasks() {
                 console.log(item,data_json[idl][item])
             })
         }
-
     })
 }
 
@@ -144,6 +140,7 @@ function debug_file_n_dir() {
 function program() {
     debug_file_n_dir()
 
+    console.log('Create, update, delete, list')
     let command = ps('Enter the command:')
     
     if (command == 'create') {
